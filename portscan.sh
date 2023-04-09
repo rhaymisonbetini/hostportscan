@@ -25,7 +25,7 @@ echo "[1] - Scan avalible host - default port 80"
 echo "[2] - Scan avalibles ports in hosts"
 echo "[3] - Scan avalible port in hosts" 
 
-read choice
+read -p "SELECT: " choice
 
 if [ $choice == "1" ]
 then
@@ -38,7 +38,7 @@ then
 			echo "SCAN INIT"
 			for host in `seq $init $final`
 				do
-					hping3 -S -p 80 -c 1 $main.$host 2> /dev/null  
+					hping3 -S -p 80 -c 1 $main.$host 1>> "./${main}-${init}-${final}.txt" 2> /dev/null | grep "flags=SA"
 				done
 					echo "SCAN FINISH!" 
 		else
@@ -58,7 +58,7 @@ then
 		echo "INIT SCAN BY PORTS IN HOST: $host"
 			for port in `seq $init $final`
 				do
-					hping3 -S -p $port -c 1 $host 2> /dev/null
+					hping3 -S -p $port -c 1 $host 1>> "./${host}-${init}-${final}.txt" 2> /dev/null | grep "flags=SA"
 				done
 					echo "SCAN FINISH!"
 	fi
@@ -76,7 +76,7 @@ then
 		echo "INIT SCAN PORT: $port IN HOSTS!"
 			for host in `seq $init $final`
 				do
-					hping3 -S -p $port -c 1 $main.$host 2> /dev/null
+					hping3 -S -p $port -c 1 $main.$host 1> "./${main}-${init}-${final}.txt" 2> /dev/null | grep "flags=SA"
 				done
 					echo "SCAN FINISH!"
 	fi
