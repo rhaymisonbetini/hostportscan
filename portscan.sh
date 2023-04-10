@@ -2,7 +2,17 @@
 
 RED='\033[0;31m'
 NC='\033[0m'
-BBlue='\033[1;34m' 
+BBlue='\033[1;34m'
+
+if [[ ${1} == "--help" ]]
+then
+ 		printf "
+			${RED}THIS PROJECT WAS DEVELOPED TO SCAN HOST PORTS TO DISCOVER POSSIBLE TARGETS.\n\
+			1 - PERFORMS A SCAN ON ALL HOSTS PASSED ON PORT 80.\n
+			2 - PERFORMS A SCAN IN POSSIBLE PORTS IN A HOST. \n
+			3 - PERFORMS A SPECIFIC SCAN ON A PORT IN SEVERAL HOST. \n
+			4 - PERFORM A TRACE HOST TO THE TARGET THROUGH IPV4 OR IPV6.\n${NC}"
+else
 
 printf "${RED} _     _  _____    _    _______    ______   _____  ______  _______       _     ______        ______  
 | |   | |/ ___ \  | |  (_______)  (_____ \ / ___ \(_____ \(_______)     | |   / _____)  /\  |  ___ \ 
@@ -12,18 +22,18 @@ printf "${RED} _     _  _____    _    _______    ______   _____  ______  _______
 |_|   |_|\_____(______/ \______)  |_|      \_____/      |_|\______)  (______/ \______)______|_|   |_|${NC} \n\n\n"
 
 printf "${BBlue}##################################################################
-#Script Name	:
-#Description	:
-#Args           :
-#Author       	:
-#Email         	:
+#Script Name	: portscan.sh
+#Description	: Project to scan host and ports
+#Author       	: r betini
+#Email         	: rhaymisoncristian@gmail.com
 ################################################################### \n\n"
 
 echo "SELECT YOU SCAN CHOICE"
 echo "---------------------------------"
 echo "[1] - Scan avalible host - default port 80"
-echo "[2] - Scan avalibles ports in hosts"
+echo "[2] - Scan avalibles ports in host"
 echo "[3] - Scan avalible port in hosts" 
+echo "[4] - Trace route to target: "
 
 read -p "SELECT: " choice
 
@@ -80,9 +90,23 @@ then
 				done
 					echo "SCAN FINISH!"
 	fi
+
+elif [ $choice == "4" ]
+then
+
+	read -p "INSERT THE TARGET EX: 192.157.1.30 " host
+	read -p "TIPE OF IP TRACER (IPV4 OR IPV6): OPS: [4,6] :" ip 
+	
+	if [ $host != "" ] 
+		then
+			echo "MAKE TRACEROUTER"
+			traceroute -n "-${ip}"  $host >> "tracerouter-${host}.txt"
+		else
+			echo "INVALID TARGET"
+	fi
+
 fi
-
-
+fi
 
 
 
