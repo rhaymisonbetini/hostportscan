@@ -33,13 +33,13 @@ echo "---------------------------------"
 echo "[1] - Scan avalible host - default port 80"
 echo "[2] - Scan avalibles ports in host"
 echo "[3] - Scan avalible port in hosts" 
-echo "[4] - Trace route to target: "
-
+echo "[4] - Trace route to target "
+echo "[5] - Scan subdomains in target"
 read -p "SELECT: " choice
 
 if [ $choice == "1" ]
 then
-	read -p "INSERT TARGET EX:192.168.1 : " main
+	read -p "INSERT TARGET EX:192.168.1 - " main
 	read -p "INSERT INITAL: " init
 	read -p "INSERT LIMIT: "  final
 
@@ -57,7 +57,7 @@ then
 
 elif [ $choice == "2" ]
 then
-	read -p "INSERT THE TARGET EX: 192.157.1.30 : " host
+	read -p "INSERT THE TARGET EX: 192.157.1.30 - " host
 	read -p "INSERT INITAL PORT : " init
 	read -p "INSERT FINAL  PORT : " final
 
@@ -74,13 +74,13 @@ then
 	fi
 elif [ $choice == "3" ]
 then
-	read -p "INSERT THE TARGET EX: 192.157.1 : " main
+	read -p "INSERT THE TARGET EX: 192.157.1 - " main
 	read -p "INSERT INITAL : " init
 	read -p "INSERT FINAL : " final
 	read -p "INSERT PORT TO SCAN (0->65535) : "  port
 
 	if [ $main == "" -o $init == "" -o $final == "" -o $port == "" ] || [ $port -le -1 -o $port -gt 65535 ]
-		then 
+		then
 		echo "INVALID PARAMS"
 		else
 		echo "INIT SCAN PORT: $port IN HOSTS!"
@@ -94,16 +94,28 @@ then
 elif [ $choice == "4" ]
 then
 
-	read -p "INSERT THE TARGET EX: 192.157.1.30 " host
-	read -p "TIPE OF IP TRACER (IPV4 OR IPV6): OPS: [4,6] :" ip 
-	
-	if [ $host != "" ] 
+	read -p "INSERT THE TARGET EX: 192.157.1.30 - " host
+	read -p "TIPE OF IP TRACER (IPV4 OR IPV6): OPS: [4,6] :" ip
+	if [ $host != "" ]
 		then
 			echo "MAKE TRACEROUTER"
 			traceroute -n "-${ip}"  $host >> "tracerouter-${host}.txt"
 		else
 			echo "INVALID TARGET"
 	fi
+
+elif [ $choice == "5" ]
+	then
+	read -p "INSERT THE TARGET EX: 192.168.157.2 - " host
+		sudo rm -rf index.html subs.txt
+		wget $host
+		cat index.html | egrep -i "href|http|https" | cut -d "/" -f3 | sed 's/"/ /' | sed 's/crossorigin="crossorigin"/ /' | sed 's/>/ /' |grep -v "window.location.href" | egrep -i ".com|.io"  | sort -u > subs.txt
+			for host in `cat subs.txt `
+				do
+					host $host | grep "has address"
+				done
+	else
+		echo "INVALID DOMAIN"
 
 fi
 fi
