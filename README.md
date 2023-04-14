@@ -27,7 +27,12 @@ Host port scan was a project developed for learning purposes in the area of Cybe
   </a>
 </p>
 
-![alt text](https://github.com/rhaymisonbetini/hostportscan/assets/sh.png)
+<p align="center">
+   <img src="https://github.com/rhaymisonbetini/hostportscan/blob/main/assets/sh.png">
+</p>
+
+
+()
 
 ## Today the application has 5 functionalities.
 
