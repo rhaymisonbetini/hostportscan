@@ -31,16 +31,13 @@ Host port scan was a project developed for learning purposes in the area of Cybe
    <img src="https://github.com/rhaymisonbetini/hostportscan/blob/main/assets/sh.png">
 </p>
 
-
-()
-
 ## Today the application has 5 functionalities.
 
-### Scanner of hosts available at a given range (runs on port 80)
-### Host scanners available in a given range on a pre-provided port.
-### Available port scanner on a host
-### Trace route
-### Scanner of subdomains on a host
+* Scanner of hosts available at a given range (runs on port 80)
+* Host scanners available in a given range on a pre-provided port.
+* Available port scanner on a host
+* Trace route
+* Scanner of subdomains on a host
 
 ## Running the script.
 
