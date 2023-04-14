@@ -1,4 +1,5 @@
 # HOST PORT SCAN
+Host port scan was a project developed for learning purposes in the area of Cybersecurity. The objective of the project is the understanding and improvement in the area of scanning and shell.
 
 <p align="center">
    <img src="https://img.shields.io/bower/l/MI?style=flat-square">
@@ -26,3 +27,35 @@
   </a>
 </p>
 
+![alt text](https://github.com/rhaymisonbetini/hostportscan/assets/sh.png)
+
+## Today the application has 5 functionalities.
+
+### Scanner of hosts available at a given range (runs on port 80)
+### Host scanners available in a given range on a pre-provided port.
+### Available port scanner on a host
+### Trace route
+### Scanner of subdomains on a host
+
+## Running the script.
+
+Download the project repository.
+
+```shell
+https://github.com/rhaymisonbetini/hostportscan.git
+```
+Provide execute permission on the file
+
+```shell
+sudo +x ./hostportscan.sh
+```
+
+run your scanner
+
+```shell
+sudo ./hostportscan.sh
+```
+
+Run the command as sudo as they will mostly generate text files containing scanner results
+
+Have a good time.

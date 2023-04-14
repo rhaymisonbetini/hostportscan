@@ -106,7 +106,7 @@ then
 
 elif [ $choice == "5" ]
 	then
-	read -p "INSERT THE TARGET EX: 192.168.157.2 - " host
+	read -p "INSERT THE TARGET EX: 192.168.157.2 or www.google.com - " host
 		sudo rm -rf index.html subs.txt
 		wget $host
 		cat index.html | egrep -i "href|http|https" | cut -d "/" -f3 | sed 's/"/ /' | sed 's/crossorigin="crossorigin"/ /' | sed 's/>/ /' |grep -v "window.location.href" | egrep -i ".com|.io"  | sort -u > subs.txt
