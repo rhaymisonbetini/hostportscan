@@ -5,10 +5,6 @@ Host port scan was a project developed for learning purposes in the area of Cybe
    <img src="https://img.shields.io/bower/l/MI?style=flat-square">
    <img src="https://img.shields.io/badge/version-1.0.0-blue">
    <img src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg">
-   <img src="https://img.shields.io/github/issues/rhaymisonbetini/hostportscan.svg">
-   <img src="https://img.shields.io/github/issues-closed/rhaymisonbetini/hostportscan.svg">
-   <img src="https://img.shields.io/github/issues-pr/rhaymisonbetini/hostportscan.svg">
-   <img src="https://img.shields.io/github/issues-pr-closed/rhaymisonbetini/hostportscan.svg">
 </p>
 
 <p align="center">
